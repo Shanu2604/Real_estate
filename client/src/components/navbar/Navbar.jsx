@@ -6,38 +6,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose, AiOutlineFileImage } from "react-icons/ai";
 import { BsHouseDoor } from "react-icons/bs";
-import { useEffect } from "react";
 import { logout } from "../../redux/authSlice";
 import { request } from "../../util/fetchAPI";
 
 const Navbar = () => {
   const [state, setState] = useState({});
   const [photo, setPhoto] = useState(null);
-  // const [isScrolled, setIsScrolled] = useState(false)
   const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState(false);
   const [showMobileNav, setShowMobileNav] = useState(false);
   const { user, token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   setState(prev => {
-  //     return {...prev, continent: 'europe', type: 'beach'}
-  //   })
-  // }, [])
-
-  // // mobile
-  // const [showMobileNav, setShowMobileNav] = useState(false)
-
-  // window.onscroll = () => {
-  //   setIsScrolled(window.pageYOffset === 0 ? false : true)
-  //   return () => (window.onscroll = null)
-  // }
-
-  // const scrollToTop = () => {
-  //   window.scrollTo(0, 0)
-  // }
 
   const handleLogout = () => {
     dispatch(logout());
@@ -71,22 +51,10 @@ const Navbar = () => {
 
       await request("/upload/image", "POST", {}, formData, true);
     } else {
-      //     setError(true)
-      //     setTimeout(() => {
-      //       setError(false)
-      //     }, 2500)
       return;
     }
 
     try {
-      //     if (Object.values(state).some((v) => !v) && Object.values(state).length < 7) {
-      //       setError(true)
-      //       setTimeout(() => {
-      //         setError(false)
-      //       }, 2500)
-      //       return
-      //     }
-
       const options = {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -96,9 +64,7 @@ const Navbar = () => {
         ...state,
         img: filename,
       });
-      //     setShowModal(false)
       setShowForm(false);
-      //     navigate(`/propertyDetail/${newProperty._id}`)
     } catch (error) {
       setError(true);
       setTimeout(() => {
@@ -127,26 +93,13 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <span
-              // className={classes.username}
-              // onClick={() => setShowModal((prev) => !prev)}
-              >
-                Hello {user.username} !
-              </span>
-              {/* {showModal && (
-                <div className={classes.userModal}>
-                  <AiOutlineClose
-                    onClick={() => setShowModal((prev) => !prev)}
-                    className={classes.userModalClose}
-                  /> */}
+              <span>Hello {user.username} !</span>
               <span className={classes.logoutBtn} onClick={handleLogout}>
                 Logout
               </span>
               <Link onClick={() => setShowForm(true)} className={classes.list}>
                 List your property
               </Link>
-              {/* </div>
-              )} */}
             </>
           )}
         </div>
@@ -254,11 +207,7 @@ const Navbar = () => {
         <div className={classes.mobileNav}>
           {showMobileNav && (
             <div className={classes.navigation}>
-              <Link
-                to="/"
-                // onClick={scrollToTop}
-                className={classes.left}
-              >
+              <Link to="/" className={classes.left}>
                 Real Estate <BsHouseDoor />
               </Link>
               <AiOutlineClose
@@ -266,12 +215,7 @@ const Navbar = () => {
                 onClick={() => setShowMobileNav(false)}
               />
               <ul className={classes.center}>
-                <li
-                  // onClick={scrollToTop}
-                  className={classes.listItem}
-                >
-                  Home
-                </li>
+                <li className={classes.listItem}>Home</li>
                 <li className={classes.listItem}>About</li>
                 <li className={classes.listItem}>Featured</li>
                 <li className={classes.listItem}>Contacts</li>

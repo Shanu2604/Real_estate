@@ -17,8 +17,6 @@ export const request = async (
       return data;
 
     case "POST":
-      // if we send form data, it is not content-type:application/json,
-      // hence the bonus param
       if (isNotStringified) {
         res = await fetch(BASE_URL + url, { headers, method, body });
         if (res.status !== 200 && res.status !== 201) throw new Error("ERROR");

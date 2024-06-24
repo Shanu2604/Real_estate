@@ -110,6 +110,7 @@ const Signup = () => {
             type="file"
             onChange={(e) => setPhoto(e.target.files[0])}
           />
+          {photo && <p>{photo.name}</p>}
           <input
             type="password"
             name="password"

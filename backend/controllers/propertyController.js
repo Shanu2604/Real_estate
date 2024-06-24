@@ -76,23 +76,6 @@ propertyController.get("/find/my-properties", verifyToken, async (req, res) => {
   }
 });
 
-// fetch bookmarked yachts
-// propertyController.get(
-//   "/find/bookmarked-properties",
-//   verifyToken,
-//   async (req, res) => {
-//     try {
-//       const properties = await Property.find({
-//         bookmarkedUsers: { $in: [req.user.id] },
-//       });
-
-//       return res.status(200).json(properties);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   }
-// );
-
 // TODO FETCH INDIVIDUAL PROPERTY
 propertyController.get("/find/:id", async (req, res) => {
   try {
@@ -146,31 +129,6 @@ propertyController.put("/:id", verifyToken, async (req, res) => {
     return res.status(500).json(error);
   }
 });
-
-// bookmark/unbookmark estate
-// propertyController.put("/bookmark/:id", verifyToken, async (req, res) => {
-//   try {
-//     let property = await Property.findById(req.params.id);
-//     if (property.currentOwner.toString() === req.user.id) {
-//       throw new Error("You are not allowed to bookmark your project");
-//     }
-
-//     if (property.bookmarkedUsers.includes(req.user.id)) {
-//       property.bookmarkedUsers = property.bookmarkedUsers.filter(
-//         (id) => id !== req.user.id
-//       );
-//       await property.save();
-//     } else {
-//       property.bookmarkedUsers.push(req.user.id);
-
-//       await property.save();
-//     }
-
-//     return res.status(200).json(property);
-//   } catch (error) {
-//     return res.status(500).json(error);
-//   }
-// });
 
 // delete estate
 propertyController.delete("/:id", verifyToken, async (req, res) => {

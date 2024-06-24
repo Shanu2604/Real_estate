@@ -13,7 +13,7 @@ const Properties = () => {
   const [allProperties, setAllProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [state, setState] = useState(null);
-  const query = useLocation().search.slice(1); // slice(1) to remove "?"
+  const query = useLocation().search.slice(1);
   const arrQuery = query.split("&");
   const navigate = useNavigate();
 
@@ -53,7 +53,6 @@ const Properties = () => {
 
   const handleSearch = (param = state) => {
     let options;
-    // we either pass the formattedObj or event, that's why we do the IF/ELSE
     if (param?.nativeEvent) {
       options = state;
     } else {
