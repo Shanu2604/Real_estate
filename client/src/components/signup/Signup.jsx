@@ -44,13 +44,16 @@ const Signup = () => {
 
         await request("/upload/image", "POST", {}, formData, true);
 
-        await fetch(`http://localhost:5000/upload/image`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          method: "POST",
-          body: formData,
-        });
+        await fetch(
+          `https://real-estate-web-app-mdmo.onrender.com/upload/image`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            method: "POST",
+            body: formData,
+          }
+        );
       } else {
         setEmptyFields(true);
         setTimeout(() => {

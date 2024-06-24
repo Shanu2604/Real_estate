@@ -71,7 +71,9 @@ const PropertyDetail = () => {
       </h3>
       <div className={classes.wrapper}>
         <div className={classes.left}>
-          <img src={`http://localhost:5000/images/${propertyDetail?.img}`} />
+          <img
+            src={`https://real-estate-web-app-mdmo.onrender.com/images/${propertyDetail?.img}`}
+          />
         </div>
         <div className={classes.right}>
           <h3 className={classes.title}>Title: {`${propertyDetail?.title}`}</h3>
@@ -95,7 +97,7 @@ const PropertyDetail = () => {
                 Owner:{" "}
                 {propertyDetail?.currentOwner?.profileImg ? (
                   <img
-                    src={`http://localhost:5000/images/${propertyDetail?.currentOwner?.profileImg}`}
+                    src={`https://real-estate-web-app-mdmo.onrender.com/images/${propertyDetail?.currentOwner?.profileImg}`}
                     className={classes.owner}
                   />
                 ) : (

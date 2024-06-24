@@ -37,7 +37,7 @@ const FeaturedProperties = () => {
                 <img
                   src={
                     property.img
-                      ? `http://localhost:5000/images/${property.img}`
+                      ? `https://real-estate-web-app-mdmo.onrender.com/images/${property.img}`
                       : img
                   }
                 />
@@ -47,7 +47,7 @@ const FeaturedProperties = () => {
                   <span className={classes.price}>$ {property?.price}</span>
                   {property?.currentOwner?.profileImg ? (
                     <img
-                      src={`http://localhost:5000/images/${property?.currentOwner?.profileImg}`}
+                      src={`https://real-estate-web-app-mdmo.onrender.com/images/${property?.currentOwner?.profileImg}`}
                       className={classes.owner}
                     />
                   ) : (
